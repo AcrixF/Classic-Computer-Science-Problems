@@ -1,4 +1,4 @@
-package org.neoa.ch02;
+package org.neoa.ch02.dna;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,14 +19,28 @@ public class GeneTest {
     @Test
     void containsCodonSequenceReturnsTrueWhenKeyFoundInGeneStream() {
         Gene.Codon acg = new Gene.Codon("ACG");
-        boolean result = SUT.containsCodonSequence(acg);
+        boolean result = SUT.containsCodonSequenceLinear(acg);
         assertThat(result).isTrue();
     }
 
     @Test
     void containsCodonSequenceReturnsFalseWhenKeyNotFoundInGeneStream() {
         Gene.Codon acg = new Gene.Codon("GAT");
-        boolean result = SUT.containsCodonSequence(acg);
+        boolean result = SUT.containsCodonSequenceLinear(acg);
+        assertThat(result).isFalse();
+    }
+
+    @Test
+    void containsCodonSequenceBinaryReturnsTrueWhenKeyNotFoundInGeneStream() {
+        Gene.Codon acg = new Gene.Codon("ACG");
+        boolean result = SUT.containsCodonSequenceBinary(acg);
+        assertThat(result).isTrue();
+    }
+
+    @Test
+    void containsCodonSequenceBinaryReturnsFalseWhenKeyNotFoundInGeneStream() {
+        Gene.Codon acg = new Gene.Codon("GAT");
+        boolean result = SUT.containsCodonSequenceBinary(acg);
         assertThat(result).isFalse();
     }
 
